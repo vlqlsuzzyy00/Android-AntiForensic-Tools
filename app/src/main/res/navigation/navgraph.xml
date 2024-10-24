@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/passFragmentNav">
+  <fragment
+    android:id="@+id/passFragmentNav"
+    android:name="com.oasisfeng.island.presentation.fragments.PassFragment">
+    <action
+        android:id="@+id/action_passFragmentNav_to_settingsFragment"
+        app:destination="@id/settingsFragment"
+        app:popUpTo="@id/passFragmentNav"
+        app:popUpToInclusive="true" />
+  </fragment>
+  <fragment
+    android:id="@+id/setupFilesFragment"
+    android:name="com.oasisfeng.island.presentation.fragments.SetupFilesFragment" />
+  <fragment
+    android:id="@+id/logsFragment"
+    android:name="com.oasisfeng.island.presentation.fragments.LogsFragment" />
+  <fragment
+      android:id="@+id/aboutFragment"
+      android:name="com.oasisfeng.island.presentation.fragments.AboutFragment" />
+  <fragment
+    android:id="@+id/settingsFragment"
+    android:name="com.oasisfeng.island.presentation.fragments.SettingsFragment" />
+  <fragment
+      android:id="@+id/profilesFragment"
+      android:name="com.oasisfeng.island.presentation.fragments.ProfilesFragment" />
+  <fragment
+      android:id="@+id/rootFragment"
+      android:name="com.oasisfeng.island.presentation.fragments.RootFragment" />
+</navigation>
