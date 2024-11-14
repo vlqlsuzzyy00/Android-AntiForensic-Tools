@@ -9,28 +9,31 @@ jobs:
 
     steps:
     - name: Check out the code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3  # Updated to v3 for Node16/Node20 compatibility
 
     - name: Set up JDK 11
-      uses: actions/setup-java@v2
+      uses: actions/setup-java@v3  # Updated to v3 for Node16/Node20 compatibility
       with:
         distribution: 'zulu'
         java-version: '11'
 
     - name: Cache Gradle packages
-      uses: actions/cache@v2
+      uses: actions/cache@v3  # Updated to v3
       with:
         path: ~/.gradle/caches
         key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
         restore-keys: |
           ${{ runner.os }}-gradle-
 
+    - name: Grant execute permission for gradlew
+      run: chmod +x ./gradlew  # Fix for exit code 126
+
     - name: Build APK
       run: ./gradlew assembleRelease
 
-    # Update to version 3 of upload-artifact
     - name: Upload APK
       uses: actions/upload-artifact@v3
       with:
         name: app-release.apk
         path: app/build/outputs/apk/release/app-release.apk
+        
