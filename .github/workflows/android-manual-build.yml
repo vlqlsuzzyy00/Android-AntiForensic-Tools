@@ -1,6 +1,5 @@
 name: Manual Android Build
 
-# Trigger manually
 on:
   workflow_dispatch:
 
@@ -29,8 +28,9 @@ jobs:
     - name: Build APK
       run: ./gradlew assembleRelease
 
+    # Update to version 3 of upload-artifact
     - name: Upload APK
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: app-release.apk
         path: app/build/outputs/apk/release/app-release.apk
